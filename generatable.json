@@ -1,0 +1,73 @@
+[
+    {
+        "type": "appBinding",
+        "label": "app bindings"
+    },
+    {
+        "type": "asset"
+    },
+    {
+        "type": "auth"
+    },
+    {
+        "type": "config"
+    },
+    {
+        "type": "controllerAction",
+        "label": "controller actions"
+    },
+    {
+        "type": "env"
+    },
+    {
+        "type": "inertia",
+        "label": "Inertia"
+    },
+    {
+        "type": "middleware"
+    },
+    {
+        "type": "mix"
+    },
+    {
+        "type": "route"
+    },
+    {
+        "type": "translation"
+    },
+    {
+        "type": "view"
+    },
+    {
+        "type": "paths",
+        "features": [
+            "link"
+        ]
+    },
+    {
+        "type": "bladeComponent",
+        "label": "Blade components",
+        "features": [
+            "link",
+            "completion",
+            "hover"
+        ]
+    },
+    {
+        "type": "livewireComponent",
+        "label": "Livewire components",
+        "features": [
+            "link",
+            "completion",
+            "hover"
+        ]
+    },
+    {
+        "type": "storage",
+        "features": [
+            "link",
+            "completion",
+            "diagnostics"
+        ]
+    }
+]

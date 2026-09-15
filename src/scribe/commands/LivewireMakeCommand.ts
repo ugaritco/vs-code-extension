@@ -1,0 +1,22 @@
+import { Command } from "../types";
+import { forceOption, testOptions } from "@src/scribe/options";
+
+export const LivewireMakeCommand: Command = {
+    name: "make:livewire",
+    postRun: "openGeneratedFile",
+    arguments: [
+        {
+            name: "name",
+            type: "path",
+            description: "The name of the Livewire component",
+        },
+    ],
+    options: [
+        {
+            name: "--inline",
+            description: "Create a component that renders an inline view",
+        },
+        ...testOptions,
+        forceOption,
+    ],
+};

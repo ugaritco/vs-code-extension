@@ -1,0 +1,1514 @@
+{
+  "name": "vscode-ugarit",
+  "publisher": "ugarit",
+  "displayName": "Ugarit",
+  "description": "Official VS Code extension for Ugarit",
+  "version": "1.00.00",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "keywords": [
+    "ugarit",
+    "php",
+    "blade",
+    "eloquent"
+  ],
+  "icon": "icon.png",
+  "homepage": "https://github.com/ugarit/vs-code-extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ugarit/vs-code-extension"
+  },
+  "bugs": {
+    "url": "https://github.com/ugarit/vs-code-extension/issues"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:php",
+    "workspaceContains:scribe"
+  ],
+  "main": "./dist/extension.js",
+  "grammars": [
+    {
+      "language": "blade",
+      "scopeName": "text.html.php.blade",
+      "path": "./syntaxes/blade.tmLanguage.json",
+      "embeddedLanguages": {
+        "source.php": "php",
+        "source.css": "css",
+        "source.js": "javascript"
+      }
+    }
+  ],
+  "contributes": {
+    "submenus": [
+      {
+        "id": "ugarit.wrapWithHelper.submenu",
+        "label": "Wrap selection with helpers"
+      },
+      {
+        "id": "ugarit.scribeMake.submenu",
+        "label": "New Ugarit File..."
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "ugarit.wrapWithHelper",
+          "when": "editorHasSelection",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.unwrap",
+          "when": "editorHasSelection",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.dd",
+          "when": "false",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.dump",
+          "when": "false",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.collect",
+          "when": "false",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.str",
+          "when": "false",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.refactorSelectedHtmlClassToBladeDirective",
+          "when": "editorHasSelection && resourceLangId == blade",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.refactorAllHtmlClassesToBladeDirectives",
+          "when": "resourceLangId == blade",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.namespace.generate",
+          "when": "resourceLangId == php",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.goToRoute",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.cast",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.channel",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.class",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.command",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.component",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.controller",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.enum",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.event",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.exception",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.factory",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.interface",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.job",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.job-middleware",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.listener",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.livewire",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.mail",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.middleware",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.migration",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.model",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.notification",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.observer",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.policy",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.provider",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.request",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.resource",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.rule",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.scope",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.seeder",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.test",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.trait",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.make.view",
+          "when": "config.Ugarit.scribeMake.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.migrate",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.migrateFresh",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.migrateRefresh",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.migrateRollback",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.migrateStatus",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.tinker",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.db",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.dbShow",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.routeList",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.pail",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.authClearResets",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.dbSeed",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.dbTable",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.dbWipe",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.eventList",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.keyGenerate",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.modelShow",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.pestDataset",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.queueClear",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.queueFailed",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.queueFlush",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.queueForget",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.queueRetry",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.scheduleList",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.scheduleTest",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.schemaDump",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.wayfinderGenerate",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.cacheClear",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.scribe.vendorPublish",
+          "when": "config.Ugarit.scribeCommands.commandPalette",
+          "group": "ugarit"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "ugarit.wrapWithHelper.submenu",
+          "when": "editorHasSelection",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.unwrap",
+          "when": "editorHasSelection",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.refactorSelectedHtmlClassToBladeDirective",
+          "when": "editorHasSelection && resourceLangId == blade",
+          "group": "ugarit"
+        },
+        {
+          "command": "ugarit.refactorAllHtmlClassesToBladeDirectives",
+          "when": "resourceLangId == blade",
+          "group": "ugarit"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "ugarit.scribeMake.submenu",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src|database|resource(s?)|test(s?))(\\/|\\\\|$)/i",
+          "group": "navigation"
+        }
+      ],
+      "ugarit.scribeMake.submenu": [
+        {
+          "command": "ugarit.scribe.make.cast",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Cast(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.channel",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Broadcasting(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.class",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.command",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Console(\\/|\\\\)Command(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.component",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)View(s?)(\\/|\\\\)Component(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.controller",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Controller(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.enum",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(Enum|ValueObject)(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.event",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Event(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.exception",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Exception(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.factory",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Database(\\/|\\\\)Factor(y|ies)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.interface",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.job",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Job(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.job-middleware",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Job(s?)(\\/|\\\\)Middleware(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.listener",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Listener(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.livewire",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Livewire(\\/|\\\\)Component(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.mail",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Mail(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.middleware",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Http(\\/|\\\\)Middleware(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.migration",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Database(\\/|\\\\)Migration(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.model",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Model(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.notification",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Notification(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.observer",
+          "when": "explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Observer(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.policy",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Polic(y|ies)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.provider",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Provider(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.request",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Http(\\/|\\\\)Request(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.resource",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Http(\\/|\\\\)Resource(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.rule",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Rule(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.scope",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Scope(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.seeder",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Database(\\/|\\\\)Seed(er?)(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.test",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)Test(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.trait",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)(app|src)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        },
+        {
+          "command": "ugarit.scribe.make.view",
+          "when": "config.Ugarit.scribeMake.explorer && explorerResourceIsFolder && resourcePath =~ /(\\/|\\\\)View(s?)(\\/|\\\\|$)/i",
+          "group": "navigation"
+        }
+      ],
+      "ugarit.wrapWithHelper.submenu": [
+        {
+          "command": "ugarit.wrapWithHelper.dd"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.dump"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.collect"
+        },
+        {
+          "command": "ugarit.wrapWithHelper.str"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "blade",
+        "aliases": [
+          "Blade",
+          "blade"
+        ],
+        "extensions": [
+          ".blade.php"
+        ],
+        "configuration": "./blade.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "blade",
+        "scopeName": "text.html.php.blade",
+        "path": "./syntaxes/blade.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.php": "php",
+          "source.css": "css",
+          "source.js": "javascript"
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "ugarit.pint.run",
+        "title": "Run Pint",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.pint.runOnDirtyFiles",
+        "title": "Run Pint on Dirty Files",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.pint.runOnCurrentFile",
+        "title": "Run Pint on Current File",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.wrapWithHelper",
+        "title": "Wrap selection with helper",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.wrapWithHelper.unwrap",
+        "title": "Unwrap selection",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.wrapWithHelper.dd",
+        "title": "with dd(...)",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.wrapWithHelper.dump",
+        "title": "with dump(...)",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.wrapWithHelper.collect",
+        "title": "with collect(...)",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.wrapWithHelper.str",
+        "title": "with str(...)",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.refactorSelectedHtmlClassToBladeDirective",
+        "title": "Refactor selected HTML class attribute to Blade directive",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.refactorAllHtmlClassesToBladeDirectives",
+        "title": "Refactor all HTML class attributes to Blade directives",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.namespace.generate",
+        "title": "Generate Namespace",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.goToRoute",
+        "title": "Go to Route",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.lsp.update",
+        "title": "Update LSP",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.cast",
+        "title": "Make Cast",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.channel",
+        "title": "Make Channel",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.class",
+        "title": "Make Class",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.command",
+        "title": "Make Console Command",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.component",
+        "title": "Make View Component",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.controller",
+        "title": "Make Controller",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.enum",
+        "title": "Make Enum",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.event",
+        "title": "Make Event",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.exception",
+        "title": "Make Exception",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.factory",
+        "title": "Make Factory",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.interface",
+        "title": "Make Interface",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.job",
+        "title": "Make Job",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.job-middleware",
+        "title": "Make Job Middleware",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.listener",
+        "title": "Make Event Listener",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.livewire",
+        "title": "Make Livewire Component",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.mail",
+        "title": "Make Mail",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.middleware",
+        "title": "Make Middleware",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.migration",
+        "title": "Make Migration",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.model",
+        "title": "Make Model",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.notification",
+        "title": "Make Notification",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.observer",
+        "title": "Make Observer",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.policy",
+        "title": "Make Policy",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.provider",
+        "title": "Make Service Provider",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.request",
+        "title": "Make Form Request",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.resource",
+        "title": "Make Resource",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.rule",
+        "title": "Make Validation Rule",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.scope",
+        "title": "Make Scope",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.seeder",
+        "title": "Make Database Seeder",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.test",
+        "title": "Make Test",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.trait",
+        "title": "Make Trait",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.make.view",
+        "title": "Make View",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.migrate",
+        "title": "scribe migrate | Run the database migrations",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.migrateFresh",
+        "title": "scribe migrate:fresh | Drop all tables and re-run all migrations",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.migrateRefresh",
+        "title": "scribe migrate:refresh | Reset and re-run all migrations",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.migrateRollback",
+        "title": "scribe migrate:rollback | Rollback the last database migration",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.migrateStatus",
+        "title": "scribe migrate:status | Show the status of each migration",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.tinker",
+        "title": "scribe tinker | Interact with your application",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.db",
+        "title": "scribe db | Start a new database CLI session",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.dbShow",
+        "title": "scribe db:show | Display information about the given database",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.routeList",
+        "title": "scribe route:list | List all registered routes",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.pail",
+        "title": "scribe pail | Tail the application logs",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.authClearResets",
+        "title": "scribe auth:clear-resets | Flush expired password reset tokens",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.dbSeed",
+        "title": "scribe db:seed | Seed the database with records",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.dbTable",
+        "title": "scribe db:table | Display information about the given database table",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.dbWipe",
+        "title": "scribe db:wipe | Drop all tables, views, and types",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.eventList",
+        "title": "scribe event:list | List the application's events and listeners",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.keyGenerate",
+        "title": "scribe key:generate | Set the application key",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.modelShow",
+        "title": "scribe model:show | Show information about an Eloquent model",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.pestDataset",
+        "title": "scribe pest:dataset | Create a new dataset file",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.queueClear",
+        "title": "scribe queue:clear | Delete all of the jobs from the specified queue",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.queueFailed",
+        "title": "scribe queue:failed | List all of the failed queue jobs",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.queueFlush",
+        "title": "scribe queue:flush | Flush all of the failed queue jobs",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.queueForget",
+        "title": "scribe queue:forget | Delete a failed queue job",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.queueRetry",
+        "title": "scribe queue:retry | Retry a failed queue job",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.scheduleList",
+        "title": "scribe schedule:list | List all scheduled tasks",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.scheduleTest",
+        "title": "scribe schedule:test | Run a scheduled command",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.schemaDump",
+        "title": "scribe schema:dump | Dump the given database schema",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.wayfinderGenerate",
+        "title": "scribe wayfinder:generate | Generate Wayfinder",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.cacheClear",
+        "title": "scribe cache:clear | Flush the application cache",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.scribe.vendorPublish",
+        "title": "scribe vendor:publish | Publish any publishable assets from vendor packages",
+        "category": "Ugarit"
+      },
+      {
+        "command": "ugarit.docker.configure",
+        "title": "Configure Docker Environment",
+        "category": "Ugarit"
+      }
+    ],
+    "configuration": {
+      "title": "Ugarit",
+      "properties": {
+        "Ugarit.phpEnvironment": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "herd",
+            "valet",
+            "sail",
+            "lando",
+            "ddev",
+            "local",
+            "docker"
+          ],
+          "enumItemLabels": [
+            "Auto Detect",
+            "Herd",
+            "Valet",
+            "Sail",
+            "Lando",
+            "DDEV",
+            "Local",
+            "Docker"
+          ],
+          "markdownEnumDescriptions": [
+            "Auto detect the local PHP environment.",
+            "Auto detect PHP version Herd is using for the project.",
+            "Auto detect PHP version Valet is using for the project.",
+            "Sail",
+            "Lando",
+            "DDEV",
+            "Use PHP installed on the local machine.",
+            "Docker"
+          ],
+          "default": "auto",
+          "markdownDescription": "Local PHP environment used for path handling in environments such as Sail, Lando, DDEV, and Docker. PHP execution uses `#Ugarit.phpCommand#`."
+        },
+        "Ugarit.phpCommand": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "PHP command used by the Ugarit LSP server, Docker environment configuration, Scribe commands, Pint, and test runner, in argv format. Defaults to php when empty."
+        },
+        "Ugarit.memoryLimit": {
+          "type": "string",
+          "default": "512M",
+          "markdownDescription": "Memory limit for the Ugarit LSP server process. Use PHP shorthand such as `512M`, `1G`, or `-1`. This does not change `#Ugarit.phpCommand#`."
+        },
+        "ugaritLsp.trace.server": {
+          "scope": "window",
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the Ugarit LSP server."
+        },
+        "Ugarit.basePath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "_Relative_ base path for the Ugarit project. This is used to resolve paths in the project. e.g. src, code/backend\n\n_Requires extension reload after changing._"
+        },
+        "Ugarit.showErrorPopups": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show popups for errors."
+        },
+        "Ugarit.env.viteQuickFix": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable quickfix for adding VITE_ variables from regular env variables."
+        },
+        "Ugarit.pest.generateDocBlocks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically generate a Pest helper file for test closures to enhance IDE support."
+        },
+        "Ugarit.pest.helperFilePath": {
+          "type": "string",
+          "default": "storage/framework/testing/_pest.php",
+          "description": "Path to the generated Pest helper file, relative to the project root."
+        },
+        "Ugarit.blade.autoSpaceTags": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically add spacing around Blade echo and comment tags."
+        },
+        "Ugarit.pint.runOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically run Pint on the current file when saved."
+        },
+        "Ugarit.testRunner.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the test runner integration."
+        },
+        "Ugarit.scribeMake.explorer": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Ugarit Scribe Make commands in the VSCode explorer."
+        },
+        "Ugarit.scribeMake.commandPalette": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Ugarit Scribe Make commands in the VSCode command palette."
+        },
+        "Ugarit.scribeCommands.commandPalette": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Ugarit Scribe commands in the VSCode command palette."
+        },
+        "Ugarit.appBinding.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for app bindings."
+        },
+        "Ugarit.appBinding.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for app bindings."
+        },
+        "Ugarit.appBinding.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for app bindings."
+        },
+        "Ugarit.appBinding.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for app bindings."
+        },
+        "Ugarit.asset.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for asset."
+        },
+        "Ugarit.asset.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for asset."
+        },
+        "Ugarit.asset.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for asset."
+        },
+        "Ugarit.asset.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for asset."
+        },
+        "Ugarit.auth.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for auth."
+        },
+        "Ugarit.auth.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for auth."
+        },
+        "Ugarit.auth.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for auth."
+        },
+        "Ugarit.auth.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for auth."
+        },
+        "Ugarit.bladeComponent.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for Blade components."
+        },
+        "Ugarit.bladeComponent.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for Blade components."
+        },
+        "Ugarit.bladeComponent.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for Blade components."
+        },
+        "Ugarit.config.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for config."
+        },
+        "Ugarit.config.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for config."
+        },
+        "Ugarit.config.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for config."
+        },
+        "Ugarit.config.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for config."
+        },
+        "Ugarit.controllerAction.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for controller actions."
+        },
+        "Ugarit.controllerAction.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for controller actions."
+        },
+        "Ugarit.controllerAction.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for controller actions."
+        },
+        "Ugarit.controllerAction.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for controller actions."
+        },
+        "Ugarit.env.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for env."
+        },
+        "Ugarit.env.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for env."
+        },
+        "Ugarit.env.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for env."
+        },
+        "Ugarit.env.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for env."
+        },
+        "Ugarit.inertia.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for Inertia."
+        },
+        "Ugarit.inertia.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for Inertia."
+        },
+        "Ugarit.inertia.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for Inertia."
+        },
+        "Ugarit.inertia.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for Inertia."
+        },
+        "Ugarit.livewireComponent.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for Livewire components."
+        },
+        "Ugarit.livewireComponent.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for Livewire components."
+        },
+        "Ugarit.livewireComponent.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for Livewire components."
+        },
+        "Ugarit.middleware.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for middleware."
+        },
+        "Ugarit.middleware.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for middleware."
+        },
+        "Ugarit.middleware.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for middleware."
+        },
+        "Ugarit.middleware.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for middleware."
+        },
+        "Ugarit.mix.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for mix."
+        },
+        "Ugarit.mix.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for mix."
+        },
+        "Ugarit.mix.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for mix."
+        },
+        "Ugarit.mix.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for mix."
+        },
+        "Ugarit.paths.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for paths."
+        },
+        "Ugarit.route.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for route."
+        },
+        "Ugarit.route.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for route."
+        },
+        "Ugarit.route.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for route."
+        },
+        "Ugarit.route.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for route."
+        },
+        "Ugarit.storage.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for storage."
+        },
+        "Ugarit.storage.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for storage."
+        },
+        "Ugarit.storage.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for storage."
+        },
+        "Ugarit.translation.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for translation."
+        },
+        "Ugarit.translation.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for translation."
+        },
+        "Ugarit.translation.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for translation."
+        },
+        "Ugarit.translation.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for translation."
+        },
+        "Ugarit.view.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable diagnostics for view."
+        },
+        "Ugarit.view.hover": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable hover information for view."
+        },
+        "Ugarit.view.link": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable linking for view."
+        },
+        "Ugarit.view.completion": {
+          "type": "boolean",
+          "default": true,
+          "generated": true,
+          "description": "Enable completion for view."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "pretest": "rimraf out && npm run compile && tsc && npm run lint",
+    "lint": "eslint src --ext ts",
+    "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",
+    "test": "vscode-test",
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "vscode:prepublish": "php build.php && npm run package",
+    "package": "npm run check-types && node esbuild.js --production",
+    "installLocal": "vsce package && code --install-extension ./vscode-ugarit-$npm_package_version.vsix"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "@typescript-eslint/eslint-plugin": "^8.69.0",
+    "@typescript-eslint/parser": "^8.69.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.1.0",
+    "esbuild": ">=0.28.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.18.0",
+    "extract-zip": "^2.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "uuid": "^11.0.3",
+    "vscode-languageclient": "^9.0.1"
+  }
+}
