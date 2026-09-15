@@ -67,10 +67,7 @@ export const runScribeInTerminal = async (
 ): Promise<void> => {
     const fullCommand = argvToShellCommand(getScribeCommand(command));
 
-    if (
-        !scribeTerminal ||
-        !vscode.window.terminals.includes(scribeTerminal)
-    ) {
+    if (!scribeTerminal || !vscode.window.terminals.includes(scribeTerminal)) {
         scribeTerminal = vscode.window.createTerminal({
             name: "Ugarit Scribe",
             cwd: workspaceFolder,

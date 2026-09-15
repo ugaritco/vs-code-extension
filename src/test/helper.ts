@@ -6,9 +6,7 @@ let extensionReady: Promise<void> | undefined;
 export async function activateExtension(): Promise<void> {
     if (!extensionReady) {
         extensionReady = (async () => {
-            const ext = vscode.extensions.getExtension(
-                "ugarit.vscode-ugarit",
-            );
+            const ext = vscode.extensions.getExtension("ugarit.vscode-ugarit");
 
             if (!ext) {
                 throw new Error("Ugarit extension not found");
